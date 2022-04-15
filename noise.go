@@ -170,7 +170,7 @@ func Turbulence(x, y, frequency, gain, lacunarity float32, octaves int) float32 
 	return sum
 }
 
-func MakeNoise(noiseType NoiseType,pixels []byte, freq, lac, gain float32, octaves,w,h int) []float32 {
+func MakeNoise(noiseType NoiseType,pixels []byte, freq, lac, gain float32, octaves,w,h int) ([]float32, float32, float32) {
 	fmt.Println("frequency:",freq,"lac:",lac,"gain",gain,"octaves",octaves)
 	noise := make([]float32, w*h)
 	min := float32(math.MaxFloat32)
@@ -225,5 +225,5 @@ func MakeNoise(noiseType NoiseType,pixels []byte, freq, lac, gain float32, octav
 		}
 	}
 
-	return noise
+	return noise, min, max
 }
